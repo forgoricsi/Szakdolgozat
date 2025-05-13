@@ -1,0 +1,14 @@
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\bin\Debug\net8.0\EmployeGenerate.exe
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\bin\Debug\net8.0\EmployeGenerate.deps.json
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\bin\Debug\net8.0\EmployeGenerate.runtimeconfig.json
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\bin\Debug\net8.0\EmployeGenerate.dll
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\bin\Debug\net8.0\EmployeGenerate.pdb
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.AssemblyInfoInputs.cache
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.AssemblyInfo.cs
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.csproj.CoreCompileInputs.cache
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.dll
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\refint\EmployeGenerate.dll
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.pdb
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\EmployeGenerate.genruntimeconfig.cache
+C:\Users\forgo\source\repos\EmployeGenerate\EmployeGenerate\obj\Debug\net8.0\ref\EmployeGenerate.dll

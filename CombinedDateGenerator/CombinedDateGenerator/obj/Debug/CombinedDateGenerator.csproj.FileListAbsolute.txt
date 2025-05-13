@@ -1,0 +1,7 @@
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\bin\Debug\CombinedDateGenerator.exe.config
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\bin\Debug\CombinedDateGenerator.exe
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\bin\Debug\CombinedDateGenerator.pdb
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\obj\Debug\CombinedDateGenerator.csproj.AssemblyReference.cache
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\obj\Debug\CombinedDateGenerator.csproj.CoreCompileInputs.cache
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\obj\Debug\CombinedDateGenerator.exe
+C:\Users\forgo\source\repos\CombinedDateGenerator\CombinedDateGenerator\obj\Debug\CombinedDateGenerator.pdb
