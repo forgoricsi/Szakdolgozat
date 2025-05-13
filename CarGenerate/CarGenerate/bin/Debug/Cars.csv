@@ -1,0 +1,15 @@
+﻿1,Ford,Transit,2020,ABC-734,101793,13,Aktiv,Generali Biztosito,Jo,Dizel,Ujszeru,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny,Pihenoben
+2,Peugeot,Boxer,2021,ABC-502,118324,20,Aktiv,Generali Biztosito,Kivalo,Dizel,Uj,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny, Terminal alkatreszek,Pihenoben
+3,Fiat,Ducato,2015,ABC-457,142827,18,Aktiv,Generali Biztosito,Jo,Dizel,Hasznalt,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny,Hasznalatban
+4,Volkswagen,Crafter,2017,ABC-289,178550,15,Aktiv,Generali Biztosito,Jo,Benzin,Hasznalt,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny,Szervizeles alatt
+5,Renault,Master,2015,ABC-232,49813,14,Aktiv,Generali Biztosito,Kivalo,Benzin,Hasznalt,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny,Szervizeles alatt
+6,Ford,Transit,2018,ABC-382,126056,17,Aktiv,Generali Biztosito,Kivalo,Dizel,Ujszeru,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny,Hasznalatban
+7,Peugeot,Boxer,2018,ABC-750,115405,19,Aktiv,Generali Biztosito,Jo,Benzin,Ujszeru,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny,Hasznalatban
+8,Fiat,Ducato,2020,ABC-252,173748,12,Aktiv,Generali Biztosito,Jo,Dizel,Ujszeru,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny, Terminal alkatreszek,Szervizeles alatt
+9,Volkswagen,Crafter,2019,ABC-645,16936,16,Aktiv,Generali Biztosito,Kivalo,Dizel,Ujszeru,Vac,Potkerek, Mentolada, Elakadasjelzo haromszog, Lathatosagi melleny, Terminal alkatreszek,Szervizeles alatt
+10,Renault,Master,2017,ABC-415,193558,0,Inaktiv,Generali Biztosito,Jo,Benzin,Hasznalt,Budapest,,Szervizeles alatt
+11,Ford,Transit,2020,ABC-175,21771,0,Inaktiv,Generali Biztosito,Kivalo,Dizel,Ujszeru,Budapest,,Szervizeles alatt
+12,Peugeot,Boxer,2015,ABC-919,100166,0,Inaktiv,Generali Biztosito,Hibas,Dizel,Hasznalt,Budapest,, Terminal alkatreszek,Hasznalatban
+13,Fiat,Ducato,2023,ABC-624,95738,0,Inaktiv,Generali Biztosito,Kivalo,Benzin,Uj,Budapest,,Hasznalatban
+14,Volkswagen,Crafter,2017,ABC-508,13511,0,Inaktiv,Generali Biztosito,Jo,Benzin,Hasznalt,Budapest,,Szervizeles alatt
+15,Renault,Master,2018,ABC-942,48625,0,Inaktiv,Generali Biztosito,Hibas,Benzin,Ujszeru,Budapest,, Terminal alkatreszek,Szervizeles alatt

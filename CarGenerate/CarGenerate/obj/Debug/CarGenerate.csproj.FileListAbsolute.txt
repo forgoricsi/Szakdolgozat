@@ -1,0 +1,7 @@
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\bin\Debug\CarGenerate.exe.config
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\bin\Debug\CarGenerate.exe
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\bin\Debug\CarGenerate.pdb
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\obj\Debug\CarGenerate.csproj.AssemblyReference.cache
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\obj\Debug\CarGenerate.csproj.CoreCompileInputs.cache
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\obj\Debug\CarGenerate.exe
+C:\Users\forgo\source\repos\CarGenerate\CarGenerate\obj\Debug\CarGenerate.pdb
