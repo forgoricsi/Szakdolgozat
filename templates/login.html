@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Bejelentkezés</title>
+    <style>
+        .error-popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; top: 0; }
+            to { opacity: 1; top: 20px; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; top: 20px; }
+            to { opacity: 0; top: 0; }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d0e8ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .input-group {
+            position: relative;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #555;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            width: 30px;
+        }
+
+        .toggle-password:focus {
+            outline: none;
+        }
+
+        .forgot-password {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .modal input {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        .modal button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding-right: 2.5rem;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: monospace;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Terminal Service Company</h1>
+
+    <div class="login-container">
+        <h2>Bejelentkezés</h2>
+        <form method="POST" action="/login">
+            <input type="email" name="email" placeholder="Email" required />
+
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Jelszó" required />
+                <button type="button" class="toggle-password" onclick="togglePassword()">👁️</button>
+            </div>            
+
+            <button type="submit">Belépés</button>
+        </form>
+        <p style="text-align:center; margin-top: 10px;">
+            <a href="#" onclick="openResetModal()">Elfelejtettem a jelszavam</a>
+        </p>
+        
+        <!-- Jelszó visszaállító modal -->
+        <div id="resetModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeResetModal()">X</span>
+                <h2>Jelszó visszaállítás</h2>
+                <input type="email" id="resetEmail" placeholder="Email cím" required>
+                
+                <div class="input-group">
+                    <input type="password" id="newPassword" placeholder="Új jelszó" required>
+                    <button type="button" id="resetToggleBtn" class="toggle-password" onclick="toggleResetPassword()">--</button>
+                </div>
+                
+                <button onclick="submitReset()">Mentés</button>
+                <p id="resetMessage"></p>
+            </div>
+        </div>        
+    </div>
+
+            <!-- Cég információ és elérhetőség -->
+            <div class="company-info" style="
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 700px;
+            text-align: center;
+        ">
+            <h3 style="color: #0056b3; margin-top: 0;">Leírás</h3>
+            <p style="text-align: left;">
+                Cégünk szakértett csapata terminálok szervizelésével, telepítésével és leszerelésével foglalkozik. 
+                Minőségi szolgáltatásunkkal hozzájárulunk ügyfeleink zökkenőmentes pénzügyi tranzakcióihoz.
+            </p>
+            
+            <div style="text-align: left; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+                <h4 style="margin-bottom: 10px;">Elérhetőség:</h4>
+                <p>Terminál igénylés esetén forduljon partner bankjainkhoz, aki létrehozza Önnek a profilját rendszerünkben.</p>
+                
+                <div style="margin-top: 10px;">
+                    <p><strong>Telefonszám:</strong> 06 1 111 1111</p>
+                    <p><strong>Email:</strong> info@terminalservice.hu</p>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showError(message) {
+            // Eltávolítjuk az előző hibaüzeneteket ha vannak
+            const existingError = document.querySelector('.error-popup');
+            if (existingError) {
+                existingError.remove();
+            }
+    
+            // Létrehozzuk az új hibaüzenetet
+            const errorPopup = document.createElement('div');
+            errorPopup.className = 'error-popup';
+            errorPopup.textContent = message;
+            document.body.appendChild(errorPopup);
+    
+            // Automatikusan eltűnik 3 másodperc után
+            setTimeout(() => {
+                errorPopup.remove();
+            }, 3000);
+        }
+    
+            document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            fetch("/login", {
+                method: "POST",  // Metódus explicit megadása
+                headers: {
+                    "Content-Type": "application/json",  // Fontos!
+                },
+                body: JSON.stringify({
+                    email: document.querySelector('input[name="email"]').value,
+                    password: document.querySelector('input[name="password"]').value
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                showError("Hiba történt a bejelentkezés során");
+                console.error("Error:", error);
+            });
+        });
+    
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleBtn = document.querySelector('.toggle-password');
+            const isHidden = passwordField.type === 'password';
+    
+            passwordField.type = isHidden ? 'text' : 'password';
+            toggleBtn.textContent = isHidden ? '−−' : '👁️';
+            passwordField.focus();
+        }
+    
+        function openResetModal() {
+            document.getElementById("resetModal").style.display = "flex";
+            // Kezdeti állapot beállítása
+            document.getElementById("resetToggleBtn").textContent = "👁️";
+            document.getElementById("newPassword").type = "password";
+        }
+    
+        function closeResetModal() {
+            document.getElementById("resetModal").style.display = "none";
+        }
+    
+        function toggleResetPassword() {
+            const field = document.getElementById("newPassword");
+            const btn = document.getElementById("resetToggleBtn");
+            const isHidden = field.type === "password";
+            field.type = isHidden ? "text" : "password";
+            btn.textContent = isHidden ? '−−' : '👁️';
+            field.focus();
+        }
+    
+        function submitReset() {
+            const email = document.getElementById("resetEmail").value;
+            const newPassword = document.getElementById("newPassword").value;
+            const msg = document.getElementById("resetMessage");
+    
+            fetch("/reset_password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, newPassword })
+            })
+            .then(res => res.json())
+            .then(data => {
+                msg.textContent = data.message;
+                if (data.success) {
+                    setTimeout(() => {
+                        document.getElementById("resetModal").style.display = "none";
+                        window.location.href = "/login";
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                msg.textContent = "Hiba történt!";
+            });
+        }
+    </script>
+    
+</body>
+</html>

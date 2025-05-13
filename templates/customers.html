@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal Service - Ügyféloldal</title>
+    <style>
+        :root {
+            --bg-color: #d0e8ff;
+            --header-color: #0056b3;
+            --text-color: #333;
+            --card-bg: white;
+            --button-bg: #007bff;
+            --button-text: white;
+            --info-bg: #f5faff;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --header-color: #0a294d;
+            --text-color: #f0f0f0;
+            --card-bg: #2d2d2d;
+            --button-bg: #1e4b8f;
+            --button-text: #e0e0e0;
+            --info-bg: #2a3d4d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background-color: var(--header-color);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--card-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .main-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 28px;
+            color: var(--header-color);
+        }
+
+        .content-container {
+            display: flex;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .powerbi-container {
+            flex: 3;
+        }
+
+        .powerbi-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-container {
+            flex: 1;
+            background-color: var(--info-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            height: 30%;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-container h3 {
+            margin-top: 0;
+            color: var(--header-color);
+        }
+
+        .info-container p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">Terminal Service Company</div>
+        <div class="dropdown">
+            <button class="dropbtn">Menü</button>
+            <div class="dropdown-content">
+                <a href="#">Főoldal</a>
+                <a href="#" id="themeToggle">Sötét mód</a>
+                <a href="#">Kapcsolat</a>
+                <a href="#">Kilépés</a>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="main-title">Ügyféloldal</h1>
+
+    <div class="content-container">
+        <div class="powerbi-container">
+            <iframe class="powerbi-iframe"
+                src="https://app.powerbi.com/view?r=eyJrIjoiOWNiNjMzNzYtYmMyMS00YjdmLTkyOWEtYzJlYjM2YjZkMzdhIiwidCI6IjFkNmE1NmZhLTcwNWEtNGJiYy04MDA0LTY3YTIxZDVlOWI5NyIsImMiOjh9"
+                frameborder="0" allowFullScreen="true">
+            </iframe>
+        </div>
+
+        <div class="info-container">
+            <h3>Kapcsolat Hibabejelentéshez</h3>
+            <p>Hiba bejelentés esetén kérjük keressen minket a megadott telefonszámon és email címen!</p>
+            <p><strong>Telefonszám:</strong> 06 1 111 1111</p>
+            <p><strong>Email:</strong> info@terminalservice.hu</p>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Betöltéskor beállítja a sötét módot, ha korábban engedélyezték
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = 'Világos mód';
+        }
+
+        themeToggle.addEventListener('click', function () {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+            themeToggle.textContent = isDark ? 'Világos mód' : 'Sötét mód';
+        });
+    </script>
+</body>
+</html>

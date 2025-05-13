@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Terminal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #eee;
+        }
+
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .dark-mode .container {
+            background-color: #1e1e1e;
+            color: #eee;
+            box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .theme-toggle {
+            margin-left: 10px;
+            padding: 6px 12px;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><strong>Terminal Service Company</strong></div>
+        <div>
+            <a href="dolgozo.html" style="color:white; text-decoration:none;">Back to Main Page</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Fény mód: Világos</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Create a New Terminal</h2>
+        <form id="terminalForm">
+            <label for="location">Location</label>
+            <input type="text" id="location" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" required>
+
+            <label for="creation_date">Creation Date</label>
+            <input type="datetime-local" id="creation_date" required>
+
+            <label for="release_version">Release Version</label>
+            <input type="text" id="release_version" required>
+
+            <label for="terminal_type">Terminal Type</label>
+            <input type="text" id="terminal_type" required>
+
+            <label for="software_version">Software Version</label>
+            <input type="text" id="software_version" value="Soft 4.9" required>
+
+            <label for="ip_address">IP Address</label>
+            <input type="text" id="ip_address">
+
+            <label for="operating_system">Operating System</label>
+            <select id="operating_system">
+                <option value="Windows">Windows</option>
+                <option value="Linux">Linux</option>
+                <option value="Android">Android</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="sim_card">SIM Card</label>
+            <input type="text" id="sim_card">
+
+            <button type="submit">Save Terminal</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('terminalForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const terminal = {
+                // id is assumed to be auto-generated on the backend
+                location: document.getElementById('location').value,
+                address: document.getElementById('address').value,
+                creation_date: new Date(document.getElementById('creation_date').value).toISOString(),
+                release_version: document.getElementById('release_version').value,
+                installer_id: null,
+                status: "raktárban",
+                last_maintenance: new Date().toISOString(),
+                terminal_type: document.getElementById('terminal_type').value,
+                software_version: document.getElementById('software_version').value || "Soft 4.9",
+                ip_address: document.getElementById('ip_address').value || "",
+                operating_system: document.getElementById('operating_system').value,
+                sim_card: document.getElementById('sim_card').value || ""
+            };
+
+            console.log("Terminal to be saved:", terminal);
+
+            // Példa backend hívás:
+            // await fetch('/api/terminals', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(terminal)
+            // });
+
+            alert("Terminal successfully created!");
+            document.getElementById('terminalForm').reset();
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.querySelector('.theme-toggle');
+            body.classList.toggle('dark-mode');
+            btn.textContent = body.classList.contains('dark-mode') ? 'Fény mód: Sötét' : 'Fény mód: Világos';
+        }
+    </script>
+</body>
+</html>

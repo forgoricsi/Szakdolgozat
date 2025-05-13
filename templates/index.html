@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power BI Riport + AI Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        #chatbox {
+            width: 600px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .user, .bot {
+            margin-bottom: 10px;
+        }
+        .user {
+            text-align: right;
+            color: blue;
+        }
+        .bot {
+            text-align: left;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Power BI Riport</h1>
+
+    <iframe width="800" height="600"
+        src="https://app.powerbi.com/view?r=eyJrIjoiOWNiNjMzNzYtYmMyMS00YjdmLTkyOWEtYzJlYjM2YjZkMzdhIiwidCI6IjFkNmE1NmZhLTcwNWEtNGJiYy04MDA0LTY3YTIxZDVlOWI5NyIsImMiOjh9"
+        frameborder="0" allowFullScreen="true">
+    </iframe>
+
+    <h2>Chat az AI-val</h2>
+
+    <div id="chatbox"></div>
+
+    <input type="text" id="userInput" placeholder="Írj ide egy kérdést..." style="width: 500px;">
+    <button onclick="sendMessage()">Küldés</button>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById("userInput");
+            const chatbox = document.getElementById("chatbox");
+
+            const message = userInput.value;
+            if (!message) return;
+
+            chatbox.innerHTML += `<div class="user"><strong>Te:</strong> ${message}</div>`;
+            userInput.value = "";
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                chatbox.innerHTML += `<div class="bot"><strong>AI:</strong> ${data.reply}</div>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            });
+        }
+    </script>
+
+</body>
+</html>

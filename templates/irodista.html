@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal Service Company</title>
+    <style>
+        :root {
+            --bg-color: #d0e8ff;
+            --header-color: #0056b3;
+            --text-color: #333;
+            --card-bg: white;
+            --button-bg: #007bff;
+            --button-text: white;
+            --user-bg: #e3f2fd;
+            --bot-bg: #f1f1f1;
+            --dropdown-bg: #f9f9f9;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --header-color: #0a294d;
+            --text-color: #f0f0f0;
+            --card-bg: #2d2d2d;
+            --button-bg: #1e4b8f;
+            --button-text: #e0e0e0;
+            --user-bg: #2a3d4d;
+            --bot-bg: #3d3d3d;
+            --dropdown-bg: #3d3d3d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .header {
+            background-color: var(--header-color);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropbtn {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--dropdown-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+        }
+        
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .main-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 28px;
+            color: var(--header-color);
+        }
+        
+        .content-container {
+            display: flex;
+            padding: 0 20px;
+            gap: 20px;
+        }
+        
+        .powerbi-container {
+            flex: 3;
+            min-height: 600px;
+        }
+        
+        .powerbi-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ai-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ai-chatbox {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: var(--card-bg);
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ai-input {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .ai-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .ai-input button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .user, .bot {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        .user {
+            background-color: var(--user-bg);
+            text-align: right;
+            margin-left: 20%;
+            color: var(--text-color);
+        }
+        
+        .bot {
+            background-color: var(--bot-bg);
+            text-align: left;
+            margin-right: 20%;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">Terminal Service Company</div>
+        <div class="dropdown">
+            <button class="dropbtn">Menü</button>
+            <div class="dropdown-content">
+                <a href="#">Profile</a>
+                <a href="#" id="themeToggle">Dark Mode</a>
+                <a href="#">Settings</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="main-title">Ügyfél</h1>
+
+    <div class="content-container">
+        <div class="powerbi-container">
+            <iframe class="powerbi-iframe"
+                src="https://app.powerbi.com/view?r=eyJrIjoiOWNiNjMzNzYtYmMyMS00YjdmLTkyOWEtYzJlYjM2YjZkMzdhIiwidCI6IjFkNmE1NmZhLTcwNWEtNGJiYy04MDA0LTY3YTIxZDVlOWI5NyIsImMiOjh9"
+                frameborder="0" allowFullScreen="true">
+            </iframe>
+        </div>
+        
+        <div class="ai-container">
+            <div class="ai-chatbox" id="chatbox">
+                <div class="bot"><strong>AI Assistant:</strong> How can I help you with the Terminal Service data today?</div>
+            </div>
+            <div class="ai-input">
+                <input type="text" id="userInput" placeholder="Ask a question about the data...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = 'Light Mode';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+            themeToggle.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+        });
+
+        function sendMessage() {
+            const userInput = document.getElementById("userInput");
+            const chatbox = document.getElementById("chatbox");
+
+            const message = userInput.value;
+            if (!message) return;
+
+            chatbox.innerHTML += `<div class="user"><strong>You:</strong> ${message}</div>`;
+            userInput.value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            // Simulate AI response (in a real app, this would be a fetch call)
+            setTimeout(() => {
+                chatbox.innerHTML += `<div class="bot"><strong>AI:</strong> I received your question about "${message}". In a real implementation, this would be an actual response from the AI service.</div>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }, 1000);
+        }
+        
+        // Allow sending message with Enter key
+        document.getElementById("userInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+
+</body>
+</html>
