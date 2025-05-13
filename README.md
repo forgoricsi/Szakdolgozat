@@ -1,0 +1,2 @@
+# Szakdolgozat
+Szakdolgozatom program részletei
